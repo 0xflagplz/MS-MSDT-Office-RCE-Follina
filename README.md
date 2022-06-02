@@ -11,6 +11,10 @@ CVE-2022-30190 | MS-MSDT Follina One Click
 8. Compress back to Docx file (Send to > Compressed (zipped) folder  |  Rename file type from zip > docx/doc )
 
 --------------------------------------------------------------------------------------------------------
+## RTF Format
+Once a docx file has been created, save it as an rtf.
+
+--------------------------------------------------------------------------------------------------------
 The act of recompressing can be observed from JohnHammond's Python Script as well:
     ~ Rebuild the original office file ~
     shutil.make_archive(args.output, "zip", doc_path)
