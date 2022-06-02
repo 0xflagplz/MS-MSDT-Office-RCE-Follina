@@ -10,12 +10,20 @@ CVE-2022-30190 | MS-MSDT Follina One Click
 7. Open/Edit the \word\_rels\Document.xml.rels and locate the relationship XML Tag with "/relationships/oleObject". After this replace the destination in "Target=" to your remote destination where it will grab the payload from. Also add "TargetMode="External"" to the XML Tag.
 8. Compress back to Docx file (Send to > Compressed (zipped) folder  |  Rename file type from zip > docx/doc )
 
-This Function can be observed from JohnHammond's Python Script:
+--------------------------------------------------------------------------------------------------------
+The act of recompressing can be observed from JohnHammond's Python Script as well:
     ~ Rebuild the original office file ~
     shutil.make_archive(args.output, "zip", doc_path)
     os.rename(args.output + ".zip", args.output)
     
 Reference: https://github.com/JohnHammond/msdt-follina/blob/main/follina.py
+
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+
 
 
 Payloads (Basic Calc Execute):
