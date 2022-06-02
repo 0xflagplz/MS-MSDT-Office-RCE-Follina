@@ -14,7 +14,7 @@ CVE-2022-30190 | MS-MSDT Follina One Click
 ### RTF File Type
 Once a docx has been saved utilizing the paramaters step / paramaters below. Save the Docx as an RTF.
 
-> If you also add these elements under the `<o:OLEObject>` element in `word/document.xml` at step 3:
+> If you also add these elements under the `<o:OLEObject>` element in `word/document.xml`:
 
 ```
 <o:LinkType>EnhancedMetaFile</o:LinkType>
