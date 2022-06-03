@@ -25,8 +25,8 @@ Once a docx has been saved utilizing the paramaters step / paramaters below. Sav
 --------------------------------------------------------------------------------------------------------
 The act of recompressing can be observed from JohnHammond's Python Script as well:
     ~ Rebuild the original office file ~
-    shutil.make_archive(args.output, "zip", doc_path)
-    os.rename(args.output + ".zip", args.output)
+    > shutil.make_archive(args.output, "zip", doc_path)
+    > os.rename(args.output + ".zip", args.output)
     
 Reference: https://github.com/JohnHammond/msdt-follina/blob/main/follina.py
 
